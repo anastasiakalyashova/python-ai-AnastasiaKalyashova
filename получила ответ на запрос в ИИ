@@ -1,8 +1,0 @@
-SELECT ?mountain ?mountainLabel ?height ?countryLabel
-WHERE {
-  ?mountain wdt:P31 wd:Q8502.
-  ?mountain wdt:P2044 ?height.
-  ?mountain wdt:P17 ?country.
-  SERVICE wikibase:label { bd:serviceParam wikibase:language "[AUTO_LANGUAGE],ru". }
-}
-LIMIT 100
