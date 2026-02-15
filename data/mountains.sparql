@@ -1,12 +1,10 @@
 # Извлекаем горы с информацией о высоте, стране расположения и материале породы для анализа геологических и географических особенностей.
 # Extracting mountains with height, country, and rock material data to analyze geological and geographical features.
-SELECT ?mountain ?mountainLabel ?height ?countryLabel ?rockMaterialLabel
+SELECT ?mountain ?mountainLabel ?coordinates ?elevation ?rockMaterialLabel
 WHERE {
-  ?mountain wdt:P31 wd:Q8502;  # Объект — гора
-            wdt:P2048 ?height; # Высота
-            wdt:P17 ?country.  # Страна
-
-  OPTIONAL { ?mountain wdt:P186 ?rockMaterial. }  # Материал скалы
-
+  ?mountain wdt:P31 wd:Q8502;      # Объект — гора
+            wdt:P186 ?rockMaterial;# Материал скалы
+            wdt:P625 ?coordinates; # Координаты
+            wdt:P2044 ?elevation.  # Высота над уровнем моря
   SERVICE wikibase:label {bd:serviceParam wikibase:language "ru,en"}
 }
